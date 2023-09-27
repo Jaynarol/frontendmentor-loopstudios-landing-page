@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const PageHome = () => (
   <>
     <Header />
-    <main className="flex flex-col px-8">
+    <main className="flex flex-col px-8 md:px-0">
       <Features />
       <Creations />
     </main>

@@ -5,3 +5,20 @@
 html {
   font-size: 15px;
 }
+
+.link-underline {
+  display: inline-block;
+  position: relative;
+}
+
+.link-underline:hover:after {
+  content: "";
+  height: 1px;
+  width: 50%;
+  background-color: white;
+  position: absolute;
+  bottom: -.5em;
+  left: 50%;
+  transform: translate(-50%);
+  transition-duration: 150ms;
+}

@@ -44,24 +44,35 @@ const creations = [
   },
 ]
 
+const ButtonSeeAll = () => (
+  <div className="my-8 text-center">
+    <Link className="btn btn-outline inline h-auto px-14 py-3 text-xl leading-none tracking-[0.4rem]" href="./">SEE ALL</Link>
+  </div>
+)
+
 const Creations = () => (
-  <section className="mb-28 mt-14 space-y-10">
-    <div>
-      <h2 className="text-center font-secondary text-4xl">OUR CREATIONS</h2>
+  <section className="mb-28 mt-14 space-y-12 md:mb-44 md:mt-20 md:px-44">
+    <div className="lg:flex lg:items-center lg:justify-between">
+      <h2 className="text-center font-secondary text-4xl md:text-5xl">OUR CREATIONS</h2>
+      <div className="hidden lg:block">
+        <ButtonSeeAll />
+      </div>
     </div>
-    <div className="grid grid-cols-1 gap-6">
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {
-        creations.map(({ text, imageMobile }) => (
-          <div key={text} className="relative ">
-            <Image className="h-full w-full object-cover " width={654} height={240} src={imageMobile} alt={text.toLowerCase()} />
-            <p className="absolute bottom-5 left-5 z-10 w-32 font-secondary text-2xl text-primary">{text}</p>
-            <div className="absolute top-0 z-20 h-full w-full bg-gradient-to-r from-[rgba(0,0,0,0.3)] from-5%" />
+        creations.map(({ text, imageMobile, imageDesktop }) => (
+          <div key={text} className="group relative text-primary hover:cursor-pointer hover:text-neutral">
+            <Image className="h-full w-full object-cover md:hidden" width={654} height={240} src={imageMobile} alt={text.toLowerCase()} />
+            <Image className="hidden h-full w-full object-cover md:block" width={256} height={450} src={imageDesktop} alt={text.toLowerCase()} />
+            <div className="absolute top-0 z-10 h-full w-full bg-gradient-to-r from-[rgba(0,0,0,0.4)] from-5% md:bg-gradient-to-t" />
+            <div className="absolute top-0 z-20 h-full w-full bg-white opacity-0 duration-150 group-hover:opacity-75" />
+            <p className="absolute bottom-4 left-4 z-30 w-32 font-secondary text-2xl opacity-90  md:bottom-12 md:left-12 md:w-48 md:text-4xl">{text}</p>
           </div>
         ))
       }
-      <div className="my-8 text-center">
-        <Link className="btn btn-outline inline h-auto px-14 py-3 text-xl leading-none tracking-[0.2rem]" href="./">SEE ALL</Link>
-      </div>
+    </div>
+    <div className="lg:hidden">
+      <ButtonSeeAll />
     </div>
   </section>
 )
